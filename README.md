@@ -2,7 +2,11 @@
 # **Individual Project - Network Intrusion Detection**
 
 ### Goals
-The goal of this project is to be able to predict anomalous behavior on a network.
+The goal of this project is to be able to predict anomalous behavior on a network. 
+
+### The Data
+For this dataset TCP/IP dump data was acquired by simulating a typical US Air Force LAN. For each TCP/IP connection, 41 quantitative and qualitative features are obtained from normal and attack data (3 qualitative and 38 quantitative features).
+The class variable has two categories: Normal and Anomalous
 
 >Deliverables will include:
 > - This repo containing: 
