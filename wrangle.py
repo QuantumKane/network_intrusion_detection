@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import sklearn.preprocessing
 
+from scipy import stats
 from sklearn.model_selection import train_test_split 
 
 
