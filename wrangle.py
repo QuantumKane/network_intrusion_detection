@@ -19,38 +19,46 @@ def get_data():
 def wrangle_nids(df):
     
      # Drop redundant or unnecessary columns
-    train = train.drop(['num_compromised', 'dst_host_srv_serror_rate', 'dst_host_srv_rerror_rate', 'serror_rate', 'dst_host_serror_rate', 'srv_serror_rate', 'srv_rerror_rate', 'land', 'urgent', 'is_host_login', 'is_guest_login', 'root_shell', 'num_root', 'su_attempted', 'wrong_fragment', 'num_access_files', 'num_shells', 'num_file_creations', 'num_failed_logins', 'srv_diff_host_rate', 'num_outbound_cmds', 'hot', 'rerror_rate'],axis=1)
+    df = df.drop(['num_compromised', 'dst_host_srv_serror_rate', 'dst_host_srv_rerror_rate', 'serror_rate', 'dst_host_serror_rate', 'srv_serror_rate', 'srv_rerror_rate', 'land', 'urgent', 'is_host_login', 'is_guest_login', 'root_shell', 'num_root', 'su_attempted', 'wrong_fragment', 'num_access_files', 'num_shells', 'num_file_creations', 'num_failed_logins', 'srv_diff_host_rate', 'num_outbound_cmds', 'hot', 'rerror_rate'],axis=1)
     
-    return train
+    return df
 
 
-def split(df, target):
+def split(df, target, seed):
     '''
-    this function takes in a dataframe and splits it into 3 samples, 
-    a test, which is 20% of the entire dataframe, 
-    a validate, which is 24% of the entire dataframe,
-    and a train, which is 56% of the entire dataframe. 
-    It then splits each of the 3 samples into a dataframe with independent variables
-    and a series with the dependent, or target variable. 
-    The function returns 3 dataframes and 3 series:
-    X_train (df) & y_train (series), X_validate & y_validate, X_test & y_test. 
+    This function takes in a dataframe, the name of the target variable
+    (for stratification purposes), and an integer for a setting a seed
+    and splits the data into train, validate and test. 
+    Test is 20% of the original dataset, validate is .30*.80= 24% of the 
+    original dataset, and train is .70*.80= 56% of the original dataset. 
+    The function returns, in this order, train, validate and test dataframes. 
     '''
-    # split df into test (20%) and train_validate (80%)
-    train_validate, test = train_test_split(df, test_size=.2, random_state=123)
+    train_validate, test = train_test_split(df, test_size=0.2, 
+                                            random_state=seed, 
+                                            stratify=df[target]
+                                           )
+    train, validate = train_test_split(train_validate, test_size=0.3, 
+                                       random_state=seed,
+                                       stratify=train_validate[target]
+                                      )
+    return train, validate, test
 
-    # split train_validate off into train (70% of 80% = 56%) and validate (30% of 80% = 24%)
-    train, validate = train_test_split(train_validate, test_size=.3, random_state=123)
 
-    # split train into X (dataframe, drop target) & y (series, keep target only)
-    X_train = train.drop(columns=[target])
-    y_train = train[target]
-    
-    # split validate into X (dataframe, drop target) & y (series, keep target only)
-    X_validate = validate.drop(columns=[target])
-    y_validate = validate[target]
-    
-    # split test into X (dataframe, drop target) & y (series, keep target only)
-    X_test = test.drop(columns=[target])
-    y_test = test[target]
-    
-    return X_train, y_train, X_validate, y_validate, X_test, y_test
+def chi2(df, var, target, alpha):
+    '''
+    This function takes in a df, variable, a target variable, and the alpha, and runs a chi squared test. Statistical analysis is printed in the output.
+    '''
+    observed = pd.crosstab(df[var], df[target])
+    chi2, p, degf, expected = stats.chi2_contingency(observed)
+
+    print('Observed\n')
+    print(observed.values)
+    print('---\nExpected\n')
+    print(expected)
+    print('---\n')
+    print(f'chi^2 = {chi2:.4f}')
+    print(f'p     = {p:.4f}\n')
+    if p < alpha:
+        print(f'Becasue the p-value: {round(p, 4)} is less than alpha: {alpha}, we can reject the null hypothesis')
+    else:
+        print('There is insufficient evidence to reject the null hypothesis')
