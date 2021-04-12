@@ -42,9 +42,7 @@ As there was no data dictionary provided, my best guesses are the following:
 |dst_host_diff_srv_rate         |                                       |float                               |
 |dst_host_rerror_rate           |                                       |int                                 |
 |dst_host_same_src_port_rate    |                                       |float                               |
-|dst_host_srv_diff_host_rate             |paperless or mailed bills              |int - boolean                       |
-|monthly charges                |in USD                                 |float                               |
-                
+|dst_host_srv_diff_host_rate    |                                       |float                               |
 
 ****
 # **Project Steps**
