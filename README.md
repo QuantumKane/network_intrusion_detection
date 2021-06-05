@@ -2,7 +2,7 @@
 # **Individual Project - Network Intrusion Detection**
 
 ### Goals
-The goal of this project is to be able to predict normal behavior on a network. 
+The goal of this project is to be able to predict normal behavior on a network in order to isolate anomalous occurances. 
 
 ### The Data
 For this dataset TCP/IP dump data was acquired by simulating a typical US Air Force LAN. For each TCP/IP connection, 41 quantitative and qualitative features are obtained from normal and attack data (3 qualitative and 38 quantitative features).
@@ -48,7 +48,7 @@ As there was no data dictionary provided, my best guesses are the following:
 # **Project Steps**
 ## Acquire & Prepare
 ### acquire.py
-- Data is acquired from .csv files on [Kaggle] (https://www.kaggle.com/nidhirastogi/network-intrusion-detection-using-python). Functions are stored in the acquire file, which allows quick access to the data. Once the acquire file is imported, it can be used each time to access the data
+- Data is acquired from .csv files on [Kaggle](https://www.kaggle.com/sampadab17/network-intrusion-detection). Functions are stored in the acquire file, which allows quick access to the data. Once the acquire file is imported, it can be used each time to access the data
 
 
 ### prepare.py
@@ -72,11 +72,11 @@ Evaluate the best model on the test data set
 ### Outcome
 - All models beat my baseline handily
 - The first Logistic Regression Model had the best results, if only slightly
-- That model performed slightly worse on my test data
+- That model performance dropped a bit on my test data, but still beat baseline
 
 # **How to Reproduce**
 - Read this README.md
-- Download the Train_data.csv from Kaggle
+- Download the Train_data.csv from [Kaggle](https://www.kaggle.com/sampadab17/network-intrusion-detection)
 - Download the wrangle.py, explore.py, and final_notebook.ipynb into your working directory
 - Run the project_report.ipynb notebook
 
