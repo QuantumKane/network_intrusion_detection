@@ -5,11 +5,11 @@
 The goal of this project is to be able to predict normal behavior on a network in order to isolate anomalous occurances. 
 
 ### The Data
-For this dataset TCP/IP dump data was acquired by simulating a typical US Air Force LAN. For each TCP/IP connection, 41 quantitative and qualitative features are obtained from normal and attack data (3 qualitative and 38 quantitative features).
-The class variable has two categories: Normal and Anomalous
+For this dataset, TCP/IP dump data was acquired by simulating a typical US Air Force LAN. For each TCP/IP connection, 41 quantitative and qualitative features were obtained from normal and attack data (3 qualitative and 38 quantitative features).
+The class variable has two categories: Normal and Anomalous.
 
 ### Resume Write-up
-Using Network Intrusion data from Kaggle, I decided to find insight on anomalous activity. I went about this by predicting normal transmissions, thereby isolating suspicious activity. I used several Classification models for prediction, all with a high degree of accuracy.
+Using Network Intrusion data from [Kaggle](https://www.kaggle.com/sampadab17/network-intrusion-detection), I decided to find insight on anomalous activity. I went about this by predicting normal transmissions, thereby isolating suspicious activity. I used several Classification models for prediction, all with a high degree of accuracy.
 
 
 >Deliverables will include:
