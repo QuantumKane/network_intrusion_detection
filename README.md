@@ -70,14 +70,14 @@ With the train data set, try four different classification models, determining w
 
 Evaluate the best model on the test data set
 ### Outcome
-- All models beat my baseline handily
-- The first Logistic Regression Model had the best results, if only slightly
-- That model performance dropped a bit on my test data, but still beat baseline
+- Decision Tree, Random Forest, and Logistic Regession1 models all performed well and beat my baseline handily
+- Logistic Regression2 model with the limited features had an accuracy that equalled my baseline
+- My best-performing model was Random Forest. I ran it on my test data for my best outcome yet: 99% accuracy and 99% recall
 
 # **How to Reproduce**
 - Read this README.md
 - Download the Train_data.csv from [Kaggle](https://www.kaggle.com/sampadab17/network-intrusion-detection)
 - Download the wrangle.py, explore.py, and final_notebook.ipynb into your working directory
-- Run the project_report.ipynb notebook
+- Run the final_notebook.ipynb notebook
 
 
