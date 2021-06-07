@@ -17,7 +17,7 @@ Using Network Intrusion data from Kaggle, I decided to find insight on anomalous
 >   - A Jupyter Notebook detailing the process to create this model
 >   - Wrangle file that holds functions to acquire and prep the data
 >   - This Readme.md detailing project planning and exection, as well as instructions for project recreation
->   - Final model created to predict anomalous behavior
+>   - Final model created to predict normal behavior
 > - [Trello Board](https://trello.com/b/G4Bv6Tsi/nid-indidual-project) outlining project steps
 
 ### Data Dictionary
